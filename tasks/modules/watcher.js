@@ -7,7 +7,7 @@ function createWatcher(watchPaths, callback) {
         if (watcher) {
             return;
         }
-        watcher = chokidar.watch(watchPaths, { ignoreInitial: true, persistent: true, ignorePermissionErrors: true });
+        watcher = chokidar.watch(watchPaths, { usePolling: true, ignoreInitial: true, persistent: true, ignorePermissionErrors: true });
         watcher.on("add", function (path, stats) {
             add(path, "add", stats);
         }).on("change", function (path, stats) {
